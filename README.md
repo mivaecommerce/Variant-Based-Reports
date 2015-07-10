@@ -1,27 +1,9 @@
-# Variant-Based-Sales-Report
-Runs a variant based product sales report given a start date, end date, and desired interval(e.g months, days, hours)
+# Variant-Based-Reports
 
-Outputs in CSV format, can be adjusted to just provide array of information
+There are 3 versions currently available
 
-Example Setup:
+Sales: Interval based, use [`intervalBased`](intervalBased/)
 
-Requires `db/db_connect.php` file if in a different directory alter the require on line 3 of  `sales_report.php`
-```HTML
-<mvt:do file="g.module_library_utilities" name="l.settings:success" value="QuickSortArray(l.settings:admin_order:orders, ':id',1)" />
+**CURRENTLY IN DEV** Sales: No Intervals, use [`noIntervals`](noIntervals/)
 
-<mvt:assign name="l.settings:startdate" value="l.settings:admin_order:orders[1]:orderdate" />
-<mvt:assign name="l.settings:desired_interval" value="'months'" />
-
-<mvt:foreach iterator="order" array="admin_order:orders">
-	<mvt:assign name="l.settings:finishdate" value="l.settings:order:orderdate" />
-</mvt:foreach>
-
-<mvt:call action = "'ABSOLUTE_LOCATION_OF_sales_report.php'" method = "'POST'" fields = "'
-l.settings:startdate,
-l.settings:finishdate,
-l.settings:desired_interval
-'" >
-<mvt:eval expr="s.callvalue" />
-</mvt:call>
-```
-Then just set up your http headers on the miva page for a CSV attachment and be done!
+Shipment Picklist, use [`shipmentPicklist`](shipmentPicklist/)
